@@ -1,7 +1,7 @@
 // ADS Touch Sensor Test Example Program (IC P/N:ATIF20 )
 // Code: 
-// Date: 2018.04.30  Ver.: 0.0.1
-// H/W Target: ARDUINO UNO R3, S/W: Arduino IDE  1.8.5
+// Date: 2018.12.14  Ver.: 0.0.2
+// H/W Target: ARDUINO UNO R3, S/W: Arduino IDE  1.8.8
 // Author: Park, Byoungbae (yni2yni@hanmail.net)
 // Note: More information? Please send to e-mail.
 // Uno R3, A4:SDA, A5: SCL, Leonardo 2:SDA,3:SCL
@@ -94,7 +94,7 @@ void loop() {
    
   Serial.write(10); 
   Serial.print("-------Touch Sensor Output Data  ---- > ");// Test Code
-  delay(50);
+  delay(100);
      
   Serial.print(read_data[0],HEX); 
   Serial.write(SP); 
@@ -105,7 +105,7 @@ void loop() {
   Serial.write(LF);   
   Serial.write(CR);
 
-  delay(50);   
+  delay(100);   
 }
 
 void  Init_ATIF20(void)
@@ -150,12 +150,12 @@ void  Init_ATIF20(void)
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
    Wire.write(byte(0x29)); // address, 0x29h
-   Wire.write(byte(0x0C)); // data
+   Wire.write(byte(0x0C)); // data  //Fast BS Disable
    Wire.endTransmission(); // 
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
    Wire.write(byte(0x2B)); // address, 0x2Bh
-   Wire.write(byte(0xE6)); // data
+   Wire.write(byte(0xC0)); // data
    Wire.endTransmission(); // 
    
    Wire.beginTransmission(ATIF20_ID_VDD);// 
@@ -175,7 +175,7 @@ void  Init_ATIF20(void)
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
    Wire.write(byte(0x48)); // address, 0x48h
-   Wire.write(byte(0x00)); // data
+   Wire.write(byte(0x33)); // data
    Wire.endTransmission(); // 
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
@@ -183,13 +183,13 @@ void  Init_ATIF20(void)
    Wire.write(byte(0x00)); // data, 0x49h
    Wire.write(byte(0x00)); // data, 0x4Ah
    Wire.write(byte(0x00)); // data, 0x4Bh
-   Wire.write(byte(0x11)); // data, 0x4Ch
-   Wire.write(byte(0x11)); // data, 0x4Dh
-   Wire.write(byte(0x11)); // data, 0x4Eh
-   Wire.write(byte(0x11)); // data, 0x4Fh
-   Wire.write(byte(0x01)); // data, 0x50h
-   Wire.write(byte(0x10)); // data, 0x51h
-   Wire.write(byte(0xCE)); // data, 0x52h   
+   Wire.write(byte(0x00)); // data, 0x4Ch
+   Wire.write(byte(0x00)); // data, 0x4Dh
+   Wire.write(byte(0x00)); // data, 0x4Eh
+   Wire.write(byte(0x00)); // data, 0x4Fh
+   Wire.write(byte(0x00)); // data, 0x50h
+   Wire.write(byte(0x00)); // data, 0x51h
+   Wire.write(byte(0x00)); // data, 0x52h   
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
    Wire.write(byte(0x54)); // address
@@ -217,7 +217,7 @@ void  Init_ATIF20(void)
 // --------------- Hidden Register End-------------------------------
 
 
-// ---------------- user code ---------------------//   
+// ---------------- user Register ---------------------//   
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
    Wire.write(byte(Ch_enable1)); // 0x01h
