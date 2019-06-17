@@ -1,7 +1,7 @@
 // ADS Touch Sensor Test Example Program (IC P/N:ATIF20 )
 // Code: 
-// Date: 2018.12.14  Ver.: 0.0.2
-// H/W Target: ARDUINO UNO R3, S/W: Arduino IDE  1.8.8
+// Date: 2019.06.17  Ver.: 0.0.3
+// H/W Target: ARDUINO UNO R3, S/W: Arduino IDE  1.8.9
 // Author: Park, Byoungbae (yni2yni@hanmail.net)
 // Note: More information? Please send to e-mail.
 // Uno R3, A4:SDA, A5: SCL, Leonardo 2:SDA,3:SCL
@@ -65,7 +65,7 @@ void  Init_ATIF20(void); //Initialize ATIF20
 #define EN_PIN    6 //I2C Enable Pin
 
 void setup(){
-  delay(100); //wait for 100[msec]
+  delay(200); //wait for 200[msec]
   
   Wire.begin();        // join i2c bus (address optional for master)
   Wire.setClock(400000);// 400Khz
@@ -155,7 +155,7 @@ void  Init_ATIF20(void)
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
    Wire.write(byte(0x2B)); // address, 0x2Bh
-   Wire.write(byte(0xC0)); // data
+   Wire.write(byte(0xC0)); // data (Sense Freq. Low)
    Wire.endTransmission(); // 
    
    Wire.beginTransmission(ATIF20_ID_VDD);// 
@@ -215,8 +215,6 @@ void  Init_ATIF20(void)
    Wire.write(byte(0x00)); // data, 0x5Fh
    Wire.endTransmission(); //    
 // --------------- Hidden Register End-------------------------------
-
-
 // ---------------- user Register ---------------------//   
 
    Wire.beginTransmission(ATIF20_ID_VDD);// 
