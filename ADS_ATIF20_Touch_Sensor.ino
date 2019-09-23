@@ -1,6 +1,6 @@
 // ADS Touch Sensor Test Example Program (IC P/N:ATIF20 )
 // Code: 
-// Date: 2019.06.17  Ver.: 0.0.3
+// Date: 2019.08.23  Ver.: 0.0.4
 // H/W Target: ARDUINO UNO R3, S/W: Arduino IDE  1.8.9
 // Author: Park, Byoungbae (yni2yni@hanmail.net)
 // Note: More information? Please send to e-mail.
@@ -138,7 +138,7 @@ void  Init_ATIF20(void)
    Wire.write(byte(0x07)); // data, 0x13h
    Wire.write(byte(0x1F)); // data, 0x14h, Value
    Wire.write(byte(0x17)); // data, 0x15h
-   Wire.write(byte(0x17)); // data, 0x16h
+   Wire.write(byte(0x03)); // data, 0x16h, Value
    Wire.write(byte(0x64)); // data, 0x17h
    Wire.write(byte(0x2B)); // data, 0x18h
    Wire.write(byte(0x11)); // data, 0x19h
