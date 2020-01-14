@@ -56,8 +56,8 @@
 #define mask2  0x77 //Mask2 : Reset Value 0x0A
 
 // ============= ATIF20 I2C Slave Address ============================//
-#define ATIF20_ID_GND  0x34 //0x68<<1 (7bit=0x34, 8bit=0x68, ID Pin=GND)
-#define ATIF20_ID_VDD  0x2C //0x58<<1 (7bit=0x2C, 8bit=0x58, ID Pin=VDD)
+#define ATIF20_ID_GND  0x34 //0x68>>1 (7bit=0x34, 8bit=0x68, ID Pin=GND)
+#define ATIF20_ID_VDD  0x2C //0x58>>1 (7bit=0x2C, 8bit=0x58, ID Pin=VDD)
 // ===================================================================//
 void  Init_ATIF20(void); //Initialize ATIF20
 
