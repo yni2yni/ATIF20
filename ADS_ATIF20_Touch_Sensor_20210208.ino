@@ -119,7 +119,7 @@ void setup(){
 }
 void loop() {
 
-   byte read_data[2] = {0};
+   byte read_data[3] = {0};
 
    // Touch Key read
    Wire.beginTransmission(ATIF20_ID_VDD); // sned ic slave address
